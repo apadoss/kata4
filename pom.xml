@@ -21,6 +21,13 @@
             <artifactId>jfreechart</artifactId>
             <version>1.0.13</version>
         </dependency>
+        <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc</artifactId>
+            <version>8</version>
+            <scope>system</scope>
+            <systemPath>c:/Users/Ale/Downloads/ojdbc8.jar</systemPath>
+        </dependency>
     </dependencies>
 
 </project>
