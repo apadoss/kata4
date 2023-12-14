@@ -9,10 +9,11 @@ import org.jfree.data.statistics.HistogramDataset;
 import org.jfree.data.xy.IntervalXYDataset;
 
 import javax.swing.*;
+import java.sql.SQLException;
 
 public class JFreeChartRatingsHistogramDisplay extends JPanel implements HistogramDisplay {
     @Override
-    public void show(Histogram histogram) {
+    public void show(Histogram histogram) throws SQLException {
         JFreeChart ratingsHistogram = ChartFactory.createHistogram(
                 "Ratings Histogram",
                 "Ratings",
@@ -24,7 +25,7 @@ public class JFreeChartRatingsHistogramDisplay extends JPanel implements Histogr
         add(new ChartPanel(ratingsHistogram));
     }
 
-    private HistogramDataset datasetWith(Histogram histogram) {
+    private HistogramDataset datasetWith(Histogram histogram) throws SQLException {
         HistogramDataset dataset = new HistogramDataset();
         dataset.addSeries("s", histogram.values(), histogram.bins());
         return dataset;

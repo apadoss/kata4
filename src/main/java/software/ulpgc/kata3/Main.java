@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         MainFrame mainFrame = new MainFrame();
         mainFrame.histogramDisplay().show(histogram());
         mainFrame.setVisible(true);
