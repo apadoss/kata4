@@ -31,7 +31,7 @@ public class OracleDatabaseApplicationLoader implements ApplicationLoader{
         return result;
     }
 
-    public OracleDatabaseApplicationLoader with(Connection connection) {
+    public static OracleDatabaseApplicationLoader with(Connection connection) {
         return new OracleDatabaseApplicationLoader(connection);
     }
 

@@ -1,6 +1,9 @@
 package software.ulpgc.kata3;
 
 import java.io.File;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.List;
 
 public class Main {
@@ -13,15 +16,15 @@ public class Main {
     private static Histogram histogram() {
         return new Histogram() {
             @Override
-            public double[] values() {
-                List<Application> applications = CsvFileApplicationLoader
-                        .with(new File("googleplaystore.csv"))
-                        .load();
+            public double[] values() throws SQLException {
+                try (Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.0.1:1521:orcl", "alumno", "orcl")){
+                    List<Application> applications = OracleDatabaseApplicationLoader.with(connection).load();
 
-                return applications
-                        .stream()
-                        .mapToDouble(Application::rating)
-                        .toArray();
+                    return applications
+                            .stream()
+                            .mapToDouble(Application::rating)
+                            .toArray();
+                }
             }
 
             @Override
