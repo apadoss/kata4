@@ -6,9 +6,9 @@ import java.util.Collections;
 import java.util.List;
 
 public class CsvFileApplicationLoader implements ApplicationLoader{
-    private File file;
+    private final File file;
 
-    public CsvFileApplicationLoader(File file) {
+    private CsvFileApplicationLoader(File file) {
         this.file = file;
     }
 
@@ -20,8 +20,6 @@ public class CsvFileApplicationLoader implements ApplicationLoader{
     public List<Application> load() {
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             return load(reader);
-        } catch (FileNotFoundException e) {
-            return Collections.emptyList();
         } catch (IOException e) {
             return Collections.emptyList();
         }
